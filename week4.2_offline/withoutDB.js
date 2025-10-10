@@ -79,30 +79,24 @@ app.put("/", function (req, res) {
 // we are using only in memory variable to store the data
 
 
-app.listen(3000, () => {
-    console.log("Server is running on http://localhost:3000");
-});
 
 
 // last end points is delete 
 
 // anytime some one do a dlete req. all the unhealth kidne  will be deleted from the server
 app.delete("/", function (req, res) {
-    if (!users.kidneys || users.kidneys.length === 0) {
-        return res.status(404).json({
-            message: "No kidneys found to delete"
-        });
+    const newKidneys = [];
+    for (let i = 0; i < users[0].kidneys.length; i++) {
+        if (users[0].kidneys[i].healthy) {
+            newKidneys.push({
+                healthy: true
+            })
+        }
     }
-
-    const initialLength = users.kidneys.length;
-    // Filter out unhealthy kidneys
-    users.kidneys = users.kidneys.filter(kidney => kidney.healthy === true);
-    
-    const deletedCount = initialLength - users.kidneys.length;
-    
-    res.json({
-        message: `${deletedCount} unhealthy kidneys were deleted!`,
-        remainingKidneys: users.kidneys.length
-    });
-
+    users[0].kidneys = newKidneys;
+    res.json({ msg: "done" })
 })
+
+app.listen(3000, () => {
+    console.log("Server is running on http://localhost:3000");
+});
