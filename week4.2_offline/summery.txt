@@ -1,0 +1,14 @@
+
+__dirname → path of the folder where your JS file runs.
+
+Relative paths (like ./files) are based on __dirname.
+
+Node only reads files from the directory you specify — not the whole system.
+
+Express can’t access C:/ or other folders unless you explicitly allow it.
+
+Project structure decides what’s readable (e.g., files inside ./files/).
+
+Use console.log(__dirname) to check where Node is reading from.
+
+

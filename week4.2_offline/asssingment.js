@@ -37,3 +37,12 @@ app.use((req, res) => {
 });
 
 module.exports = app;
+//app.listen(3000, () => console.log("Running on http://localhost:3000"));
+
+
+
+//Node.js (and Express) can only access files and folders relative to where your server file is running, unless you explicitly tell it otherwise.
+// C:\Users\Abhishek\Desktop\hkcourse\week4.2_offline not from thes e
+// but form these
+
+//http://localhost:3000/file/a.txt
