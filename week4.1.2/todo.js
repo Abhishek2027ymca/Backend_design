@@ -5,6 +5,7 @@ const FILE = "todos.json";
 
 // ✅ Step 1: Read todos from file (or start with an empty list)
 function loadTodos() {
+  // if not exist then it will make that file 
   if (!fs.existsSync(FILE)) {
     fs.writeFileSync(FILE, "[]"); // create empty file if not there
   }
