@@ -1,0 +1,31 @@
+// //
+// 1. http://localhost:3000/multiply?a=1&b=2
+// 2. [http://localhost:3000/add?a=1&b=2](http://localhost:3000/multiply?a=1&b=2)
+// 3. [http://localhost:3000/divide?a=1&b=2](http://localhost:3000/multiply?a=1&b=2)
+// 4. [http://localhost:3000/subtract?a=1&b=2](http://localhost:3000/multiply?a=1&b=2)
+
+
+const express = require("express")
+
+// crreatinfa get endpoint 
+
+ const app = new express();
+ 
+ app.get("/multiply"  , function (req , res){
+ //   foro taking a as input in  query patram 
+ const a = req.query.a
+ const b = req.query.b
+
+ const ans = a*b 
+
+
+  res.send("Hi, the answer is " + ans);
+
+ })
+
+ 
+//
+
+ app.listen(3000)
+
+

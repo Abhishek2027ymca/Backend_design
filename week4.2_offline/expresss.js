@@ -22,6 +22,8 @@ const app = express();
 // Define a route with query parameter
 app.get("/", function (req, res) {
     // Extract query parameter 'n'
+    // requesting a query from the useer 
+    
     const n = req.query.n;
     const ans = sum(n);
 
@@ -30,3 +32,5 @@ app.get("/", function (req, res) {
 });
 
 // 
+
+app.listen(3000)
