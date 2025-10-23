@@ -1,0 +1,13 @@
+
+{
+  "name": "mini-bookstore-api",
+  "version": "1.0.0",
+  "description": "Mini Bookstore API - status server + Express backend (step-by-step)",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "status": "node status-server.js"
+  },
+  "author": "",
+  "license": "MIT"
+}

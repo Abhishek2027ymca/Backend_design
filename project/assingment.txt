@@ -1,0 +1,153 @@
+Full-stack (backend) medium-level assignment — Mini Bookstore API
+
+Nice — here’s a single medium-difficulty assignment that intentionally covers Node.js core HTTP, Express, HTTP servers, headers, query params, middleware, CORS, and Postman. It includes clear requirements, deliverables, starter code, test examples, and a grading rubric so you can implement and validate everything.
+
+Goal
+
+Build a small Bookstore API that:
+
+Exposes a lightweight health/status endpoint using Node.js core http (no Express)
+
+Implements a RESTful set of book endpoints using Express
+
+Uses headers, query params, middleware (logger, auth simulation, error handler), and CORS
+
+Is testable with Postman and curl
+
+Requirements (functional)
+
+Node core HTTP endpoint
+
+GET /status served by a plain Node http server (port 3000 or configurable).
+
+Response: JSON { status: "ok", uptime: <seconds>, time: <ISO timestamp> }.
+
+Express API (can run on same port behind a simple router or different port — state in README)
+
+GET /books
+
+Returns list of books (in-memory array or books.json).
+
+Support query params:
+
+?author=... filter by author (case-insensitive substring).
+
+?title=... filter by title.
+
+?page= and ?limit= for pagination (default page=1, limit=10).
+
+GET /books/:id
+
+Return book by id or 404.
+
+POST /books
+
+Create a new book. Expect JSON body { title, author, year }.
+
+Require header x-api-key (see middleware).
+
+Validate inputs; respond 400 for bad request.
+
+PUT /books/:id
+
+Replace/update book. Requires x-api-key as well.
+
+Return updated object.
+
+DELETE /books/:id
+
+Requires x-api-key. Return 204 on success.
+
+Middleware
+
+Logger middleware: logs method, path, timestamp, and response time (to console).
+
+Auth middleware: rejects POST/PUT/DELETE when header x-api-key missing or wrong value. (Value can be stored in .env or README).
+
+Validation middleware: ensure required fields present for POST/PUT.
+
+Error-handling middleware: catches thrown errors and returns { error: "message" } with appropriate status code.
+
+Headers
+
+On GET /books, include custom response header X-Total-Count with total matching books count.
+
+Require Accept: application/json for endpoints returning JSON; respond 406 if not acceptable.
+
+CORS
+
+Configure CORS to allow a specific origin (e.g., http://localhost:8080) and support credentials. Make it configurable via environment or README.
+
+Postman
+
+Create a Postman collection (or list curl commands) demonstrating all endpoints including headers, query params, and error cases.
+
+Include examples for pagination, filter, create/update/delete.
+
+Non-functional
+
+Keep data persistent across restarts optional: it's fine to use an in-memory array (persist optional to books.json using fs).
+
+Provide clear README with run steps, environment variables (PORT, API_KEY, CORS_ORIGIN), and sample requests.
+
+Use modern JavaScript (ES modules or CommonJS) and npm scripts to start server(s).
+
+Stretch / Bonus (optional)
+
+Add simple token-based auth (e.g., Authorization: Bearer <token>).
+
+Save books to a JSON file (CRUD persists).
+
+Add search ranking (score matches by title/author).
+
+Add tests (Jest / supertest) for key endpoints.
+
+Implement rate-limiting middleware.
+
+Deliverables
+
+A git repo or zipped folder with:
+
+Source code
+
+package.json with start script
+
+README.md (how to run, env vars, Postman collection import or curl examples)
+
+Postman collection export (or a file requests.md with curl examples)
+
+Optional: books.json sample data
+
+Short video clip (optional) showing Postman calls working
+
+Grading rubric (suggested)
+
+Correctness (60%)
+
+Node /status works (5%)
+
+CRUD endpoints work (30%)
+
+Query params filtering & pagination (10%)
+
+Headers X-Total-Count, Accept enforcement (5%)
+
+CORS configured (5%)
+
+Proper HTTP status codes (5%)
+
+Middleware & structure (25%)
+
+Logger works (5%)
+
+Auth middleware works (8%)
+
+Error handling (7%)
+
+Validation (5%)
+
+Documentation & Postman (10%)
+
+Clear README and working Postman collection/curl examples
+
+Bonus features (up to +5%)
