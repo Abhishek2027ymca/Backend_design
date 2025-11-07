@@ -1,0 +1,51 @@
+
+
+Perfect idea 🔥 — that’s exactly how you’ll make it stick.
+Here’s a small practical assignment based on your JWT authentication system — designed for quick revision + practice.
+
+🧠 Assignment: JWT Auth + Protected Routes (Mini Project)
+🎯 Goal
+
+Build a simple Express server with:
+
+user signup
+
+user login (returns JWT)
+
+2 protected routes that only work if token is valid
+
+📋 Requirements
+
+Signup Route (POST /signup)
+
+Accepts username and password
+
+Checks if username already exists
+
+Saves user (in-memory array)
+
+Responds with "Signup successful"
+
+Signin Route (POST /signin)
+
+Accepts username and password
+
+If valid, generate JWT (jwt.sign())
+
+Responds with { token: "<JWT_TOKEN>" }
+
+Token should expire in 2 minutes (expiresIn: "2m")
+
+Protected Routes
+
+GET /profile: returns user info (from JWT)
+
+GET /dashboard: returns message "Welcome <username> to your dashboard!"
+
+Both should:
+
+Read token from Authorization header
+
+Verify with jwt.verify()
+
+If invalid or expired → return 403 with "Invalid or expired token"
