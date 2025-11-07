@@ -24,7 +24,7 @@ function generate_token() {
 }
 // creatign a random functipon to generaet token// random string
 
-app.post("/Signin", function (req, res) {
+app.post("/Signup", function (req, res) {
   // we will  be requiring  two thing only // as a inmmemory varibale
 
   const username = req.body.username;
@@ -58,13 +58,15 @@ app.post("/Signin", function (req, res) {
 
 // whenever  user hit this end point
 
-app.post("/Signup", function (req, res) {
+app.post("/Signin", function (req, res) {
   const username = req.body.username;
   const password = req.body.password;
 
   if (!username || !password) {
     return res.status(400).json({ msg: "username and password required" });
   }
+
+
 
   let founduser = null;
 
@@ -91,11 +93,34 @@ app.post("/Signup", function (req, res) {
 });
 
 app.get("/me" , function (req, res) {
-
+// getting the token fomt he  header 
+// user will send us the tken  formt  the header 
+// which contains the metadata 
+// storing the token in a varibale
   const token = req.headers.token;
-  const founduser =  null;
+  const foundUser = null ;
+  //// the token i got  formt he user , i will check  it form users arrya where all the token are present 
 
-});
+ for (let i = 0; i < users.length; i++) {
+  if(users[i].token === token){
+    foundUser = users[i];
+ }
+}
+
+
+ if(foundUser){
+  res.json({
+    username: foundUser.username,
+    password : foundUser.password 
+  })
+ }
+ else {
+  res.json({
+    message : " token invalid"
+  })
+ }
+
+})
 
 
 const PORT = 3000;
