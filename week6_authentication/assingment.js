@@ -10,7 +10,7 @@ const app = express()
 app.use(express.json());
 
 
-const user = [];
+const users = [];
 // an empty aray ehre user can store the n username an  password 
 
 
@@ -21,7 +21,7 @@ app.post("/signup" , function(req, res){
 // you havnt provided the username and passsword 
     if(!username || !password){
         return res.status(400).json({
-            msg  : " username and password already exist "
+            msg  : " you havnt provided the  required data "
         })
     }
 
@@ -35,9 +35,8 @@ app.post("/signup" , function(req, res){
       msg: "you are already signed in",
     });
   }
-
 // now string the data in in users array 
-user.push({
+users.push({
     username : username ,
     password: password
 })
@@ -68,6 +67,14 @@ app.post("/signin" , function(req, res){
       founduser = users[i];
       break;
     }
+
+    else{
+        res.status(401).json(
+            {
+                msg :" invalid credentials" ,
+            }
+        )
+    }
  }
 // storingthe value of current user and password  in app found user 
 
@@ -90,16 +97,59 @@ if (founduser)
 // creating the prtected routes
 
 app.get("/profile" , function(req, res){
-
-
     //  returning the user info fromthe jwt  
-    
+// taking the toekn 
+    let token = req.headers.token ;
+    const decodeinfo_from_the_token = jwt.verify(token , jwt_secrett);
+      let foundUser = null ;
+  const   getusername  = decodeinfo_from_the_token.username;
+  // it cannoot return password 
+for (let i = 0; i < users.length; i++) {
+  if(users[i].username === getusername){
+    foundUser = users[i];
+ }
+}
+//// check here 
+ if(foundUser){
+  res.json({
+    username: foundUser.username,
+    password : foundUser.password 
 
-    
+  })
+ }
+ else {
+  res.json({
+    message : "token invalid"
+  })
+ }
+
+})
+
+
+app.get("/dashboard" ,  function(req, res){
+// take user credential like token
+// from it convert  jwt into username 
+// gives a msg of   returns message "Welcome <username> to your dashboard!"
+
+   let token = req.headers.token ;
+    const decodeinfo_from_the_token = jwt.verify(token , jwt_secrett);
+      let foundUser = null ;
+
+  const   getusername  = decodeinfo_from_the_token.username;
+
+
+  res.json({
+    msg :"Welcome " <getusername> " to your dashboard!"
+  })
+
 
 })
 
 
 
 
-app.listen(3000);
+
+const PORT = 3000;
+app.listen(PORT, () => console.log(`Server listening on port ${PORT}`));
+
+
