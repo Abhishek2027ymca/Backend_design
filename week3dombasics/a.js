@@ -10,6 +10,9 @@
 
   }
 
+  
+
+
   // to add an elmenty in the dom we use appendchild
   // we also has to acces the paeren t
   

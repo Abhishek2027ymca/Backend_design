@@ -2,13 +2,14 @@
 function delay( ms){
      return new Promise(reslove  => setTimeout (reslove))
 }
+// alwatys  amke a delay function 
 
 
 async function run() {
 
     console.log("start");
      await delay(3000);
-
+ 
      console.log( " after two seconds ");
      
     
@@ -21,6 +22,10 @@ run();
 // fetch api  with async await 
 
  
+// only function marked asyn can use awaut 
+// await pauses execution until  the priomise is resolverd 
+// async fnc return a primis 
+
 function addAsync(a, b){
      return new Promise( resolove => {
         setTimeout (( )=> resolove(a+b) , 3000 )
@@ -28,7 +33,7 @@ function addAsync(a, b){
 }
 
 
- async function cal(){
+ async function call(){
   
     console.log("Adding the number");
      
@@ -44,4 +49,4 @@ function addAsync(a, b){
          console.log(" after 3 secs");
         
  }
- cal();
+ call();
