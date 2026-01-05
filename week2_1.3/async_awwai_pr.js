@@ -4,18 +4,18 @@ function delay( ms){
 }
 
 
-// async function run() {
+async function run() {
 
-//     console.log("start");
-//      await delay(3000);
+    console.log("start");
+     await delay(3000);
 
-//      console.log( " after two seconds ");
+     console.log( " after two seconds ");
      
     
-// }
+}
 
-// run();
-// execute the function ftter declaring it 
+run();
+// execute the function afterlin declaring it 
 
 
 // fetch api  with async await 
@@ -26,6 +26,7 @@ function addAsync(a, b){
         setTimeout (( )=> resolove(a+b) , 3000 )
      })
 }
+
 
  async function cal(){
   

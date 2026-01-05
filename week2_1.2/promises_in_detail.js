@@ -1,18 +1,18 @@
 
-// // promise constructor
-// // promise class gives you a promise that i will provide yous omeyhinf in future 
+// promise constructor
+// promise class gives you a promise that i will provide yous omeyhinf in future 
 
-// function logname(){
-//     console.log("harkirat");
+function logname() {
+    console.log("harkirat");
 
-// }
-// /// logname executrd in swttimeout 
+}
+/// logname executrd in swttimeout 
 
-// //////jab  5 sec ho jaaye to callback the  loh=ganme function
-// setTimeout(logname, 5000); // after 3 seconds it will call the function 
+//////jab  5 sec ho jaaye to callback the  loh=ganme function
+setTimeout(logname, 5000); // after 3 seconds it will call the function 
 
-// // promioses  are just a cleaner way to write callbacks
-// // used  to handel asynchronous oprations more efficiently
+// promioses  are just a cleaner way to write callbacks
+// used  to handel asynchronous oprations more efficiently
 
 
 function setTimeoutPromisified(ms) {

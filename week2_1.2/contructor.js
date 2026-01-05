@@ -12,7 +12,8 @@ class rectangle {
         this.height = height;
         this.color = color ;
     }
-
+     
+     
     area(){
         const are = this.width* this.height ;
         return are ;
@@ -52,3 +53,6 @@ console.log(map.get("name"));
 const firstname = map.get('name');
 console.log(firstname);
 
+map.get('name');
+map.set("key" , "value")
+map.get('key');

@@ -10,12 +10,18 @@ console.log("hello one");
 
  console.log("hello three");
  
-
+// fom promise class 
   let promise = new Promise(function(resolve, reject) {
     console.log(" hello from promise constructor");
     
     resolve(444);
 
 })
+
+
+// function(resolve, reject) {
+//     console.log(" hello from promise constructor");}
+
+let pr = new Promise(  )
 
 
