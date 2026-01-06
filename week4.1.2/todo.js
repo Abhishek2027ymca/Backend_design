@@ -11,7 +11,8 @@ function loadTodos() {
   }
   const data = fs.readFileSync(FILE, "utf-8");
   return JSON.parse(data);
-}
+} 
+
 
 // ✅ Step 2: Save todos back to file
 function saveTodos(todos) {
@@ -41,6 +42,7 @@ else if (command === "delete") {
   console.log("🗑️ Todo deleted:", id);
 }
 
+
 else if (command === "done") {
   // mark todo as done
   const id = Number(input);
@@ -63,3 +65,30 @@ else {
   // if wrong command
   console.log("❓ Commands: add <task> | delete <id> | done <id> | list");
 }
+
+
+
+
+// const express = require("express");
+// const app  = express();
+ 
+
+// app.get("/" , (req, res) =>{
+//     res.send("Hello World");
+
+// })
+
+// // res = respomfing with some datra  to the webpage 
+// // req = requesting some data from the webpage
+
+// app.post("/" , (req, res)=> {
+
+//     res.send("Post Request Received");
+// })
+
+// app.get("/about" , (req, res)=> {
+//      res.send( " info about the page ")
+
+// })
+
+app.listen(3000)  //listenng  omn this port 

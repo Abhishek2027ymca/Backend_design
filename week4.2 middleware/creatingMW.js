@@ -49,3 +49,18 @@ app.get("/ride2", isoldmw ,  function (req, res) {
 })
 
 app.listen(3000)
+
+  
+
+app.get("/" , (req, res) => {
+   // taking input from the user
+   //  
+    res.send("Hello World from express js ")
+})
+
+
+
+
+
+
+app.listen(3000);// ap is lintening 

@@ -20,8 +20,7 @@ function addtodo() {
     document.querySelector("body").appendChild(newdiv)
 
         ctr = ctr+1 ;
-
-
+            
 }
 
 

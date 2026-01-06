@@ -7,9 +7,10 @@ program
   .name("counter")
   .description("CLI to do file-based tasks")
   .version("0.8.0");
+// using an inbuild  lib   to install a command line intreface
 
 program
-  .command("count_sentences")
+  .command("count")  // Define the command supperted by cli called count_sentences
   .description("Count the number of sentences in a file")
   .argument("<file>", "File to count the number of sentences")
   .action((file) => {
@@ -24,3 +25,8 @@ program
   });
 
 program.parse(process.argv);
+
+
+// to run the cod e
+// node createcli.js count /Users/Abhishek/Desktop/hkcourse/week4.1/a.txt
+// name of current file  followed by command followed by path of file 
