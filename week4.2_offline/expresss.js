@@ -1,4 +1,4 @@
-// HTTP is a protocol
+// HTTP is a protocol 
 // We use Express to make an HTTP server
 // Exposing a functionality on the internet// Start the server on port 3000
 // app.listen(3000, () => {
@@ -29,6 +29,7 @@ app.get("/", function (req, res) {
 
     // Send the result back to the client
     res.send("Hi, the answer is " + ans);
+       
 });
 
 // 
