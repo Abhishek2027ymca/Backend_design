@@ -10,6 +10,7 @@ const express = require("express")
 // crreatinfa get endpoint 
 
  const app = new express();
+ // this is a orute handler
  
  app.get("/multiply"  , function (req , res){
  //   foro taking a as input in  query patram 

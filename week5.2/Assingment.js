@@ -13,15 +13,15 @@ const app = express()
 app.use(express.json())
 
 
-app.post("/sum",  function( req, res){
+app.post("/sum", function (req, res) {
 
 
-const n = parseInt(req.query.n)
-const m = parseInt(req.query.m)
+    const n = parseInt(req.query.n)
+    const m = parseInt(req.query.m)
 
-res.json({
-    ans : n+m
-})
+    res.json({
+        ans: n + m
+    })
 
 
 
