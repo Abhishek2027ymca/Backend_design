@@ -1,8 +1,11 @@
 
 const express = require("express")
-
+const cors = require("cors");
 const app = express()
 
+app.use( cors() ) ;
+// all f.e  will use this cors mw
+// as we havnt se the domainnam e
 let requestcount = 0 ;
  
 function requestInc(req, res ,next){
