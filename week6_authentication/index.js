@@ -9,7 +9,7 @@ const app = express();
 app.use(express.json());
 // ceeatig n a global varibale
 
-const users = [];
+const users = [];// ana aarray
 
 // function to genreate token of 10 characters
 function generate_token() {
@@ -24,6 +24,9 @@ function generate_token() {
 }
 // creatign a random functipon to generaet token// random string
 
+
+
+ 
 app.post("/Signup", function (req, res) {
   // we will  be requiring  two thing only // as a inmmemory varibale
 
@@ -66,8 +69,6 @@ app.post("/Signin", function (req, res) {
     return res.status(400).json({ msg: "username and password required" });
   }
 
-
-
   let founduser = null;
 
   for (let i = 0; i < users.length; i++) {
@@ -81,7 +82,8 @@ app.post("/Signin", function (req, res) {
     const token = generate_token();
 
     // put that token into the founduser object
-    founduser.token = token;
+    founduser.token = token; // that global araty will store tokn value also 
+    // 
     // respond with the token
     return res.json({
       message: token,
@@ -117,7 +119,7 @@ app.get("/me" , function (req, res) {
  }
  else {
   res.json({
-    message : " token invalid"
+    message : "token invalid"
   })
  }
 

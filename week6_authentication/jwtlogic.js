@@ -15,7 +15,6 @@ const users = [];
 // function to genreate token of 10 characters
 
 
-
 app.post("/Signup", function (req, res) {
   // we will  be requiring  two thing only // as a inmmemory varibale
 
@@ -55,12 +54,14 @@ app.post("/Signin", function (req, res) {
 
   for (let i = 0; i < users.length; i++) {
     if (users[i].username == username && users[i].password == password) {
-      founduser = users[i];
+      founduser = users[i]; // muje user milgya
       break;
     }
-  }
+  }   
+
+
 //// IMPORTANR CHNAGE HAPPENED HERE
-  if (founduser) {
+  if (founduser) {  
     // conveting the username into a a json webtoken 
     const token = jwt.sign({ username: username }, jwt_secret);
 // token generated above by this function 
