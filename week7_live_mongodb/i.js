@@ -6,6 +6,7 @@ const mongoose = require("mongoose");
 const {UserModel , TodoModel}  = require("./db")
 // skelatne for the epxress cod e
 //!!!!!!always creste a jwt seceret key 
+
 const JWT_SECRET = "ADE!@EX$&%FGHI(7)*HIKL";
 mongoose.connect("mongodb+srv://admin:rr8prOazvrC6Tzi1@cluster0.byjr6ke.mongodb.net/todoapp");
 
@@ -39,7 +40,7 @@ app.post("/signup"  ,async function(req, res){ // we use asyn funcion here
 
 app.post("/signin" ,async function(req, res){
     
-    const email = req.body.email;
+    const email = req.body.email;// expecting an  email in email header of req body 
     const password = req.body.password;
 
     // read data from db to check if the user exists
@@ -51,8 +52,8 @@ app.post("/signin" ,async function(req, res){
 
     if(user){// then return token 
         const token = jwt.sign({
-            id :user._id , // where to put the secret key 
-        }, JWT_SECRET);
+            id :user._id.toString(), // to conevrtign userid whcij is an ojbectid , into string 
+        }, JWT_SECRET);// where to put the secret key 
         res.json({
    token : token 
         })
@@ -71,16 +72,41 @@ app.post("/signin" ,async function(req, res){
 
 // these end potns after the  authetication 
 // _____userr creatign thjeir todos 
-app.post("/todo" ,function(req, res){
+app.post("/todo" ,auth , function(req, res){
+const userId = req.userId;
+
+res.json({
+    userid : userId
+})
 
 });
 // fetching their todos 
-app.get("/todos" ,function(req, res){
+app.get("/todos" , auth , function(req, res){
+
+    const userId = req.userId;
+
+res.json({
+    userid : userId
+})
 
 });
 
 // creating a middleware for authetication
+function auth(req, res, next){
+    const token = req.headers.token;// expecting a token in token header 
 
+    const decodedData = jwt.verify(token , JWT_SECRET);
+    if(decodedData){
+        req.userId = decodedData.id ;// not userId its id , found ed by checkig the jwt value 
+        next();
+    }
+    else{
+        res.status(403).json({
+            msg : " incorrect data"
+        })
+    }
+
+}
 
 
 app.listen(3000);
