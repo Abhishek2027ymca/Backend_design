@@ -1,5 +1,6 @@
 
 const mongoose = require("mongoose");
+
  const ObjectId = mongoose.ObjectId;
 
 // importing a class calld  schema  
@@ -9,6 +10,7 @@ const User = new Schema({
      email : String,
      password : String,
      name : String
+
 
 })// defint the schema 
 // putting the dta int he table 
@@ -20,13 +22,16 @@ const Todo = new Schema({
     userId : ObjectId 
   
 
-
 })
 //________________________________this'users' will eb same a sin mongodb , so be specific 
-const UserModel = mongoose.model('users' , User)
-const Todomodel = mongoose.model('todos' , Todo)
-
+const UserModel = mongoose.model('users' , User)// User is the name int  the  schema 
+const Todomodel = mongoose.model('Todos' , Todo)
+//...............................'from mongodb ,  from th e current chgena i created  here 
 module.exports = {
     UserModel : UserModel ,
     Todomodel : Todomodel
 }
+// exporting these  iles from here 
+// exporting is very omoprtant to use it in other files
+// i can export any thing from here  like functions , variables  or classes
+// but rn i have exported 2 models
