@@ -1,0 +1,30 @@
+// inpit vaidation in neceseary 
+// if we expect a string and user sends an object or array or number .
+// server will crash
+e.g 
+{
+   "name" : { "$gt" : "" }  // object instead of string 
+}   
+// to avoid this we have to do input validation
+// EITHER MANUALYY APLLY CHECKS
+//OR USE LIBRARIES LIKE ZOD / JOI /YUP
+
+we use ZOD for schema validation 
+
+
+_________noraml sa e.g__________
+    const requiredSchema = z.object({// require schema should be an object whcih has an email 
+        // defining the schema for the signup
+        email: z.string().max(100).email(),// will take an eamil format 
+        password: z.string().min(5),
+        name: z.string().min(2)
+    });
+    // parsing the zod data 
+
+    const parseData = requiredSchema.safeParse(req.body);// is our requires schema is matching with the req body data
+    if(!parseData.success){
+        res.json({
+            message: "incorrect format"
+        })
+        return ;
+    }

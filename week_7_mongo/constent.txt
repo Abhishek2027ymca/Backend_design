@@ -1,0 +1,23 @@
+
+
+Recap
+
+1:09
+Hashing password
+
+15:19
+Adding password encryption
+
+36:31
+Error handling (try catch)
+
+55:15
+Input validation using Zod
+
+1:01:55
+Assignment
+
+1:26:36
+Conculsion and Q&A
+
+1:27:52

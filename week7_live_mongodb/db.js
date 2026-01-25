@@ -11,15 +11,16 @@ const User = new Schema({
      password : String,
      name : String
 
-
-})// defint the schema 
+//MongoDB is schema-less, but mongoose enforces structure
+})
+// defint the schema 
 // putting the dta int he table 
 
 
 const Todo = new Schema({
     title : String ,
     done : Boolean ,
-    userId : ObjectId 
+    userId : ObjectId  // type is object id which we have to import 
   
 
 })
@@ -28,7 +29,9 @@ const UserModel = mongoose.model('users' , User)// User is the name int  the  sc
 const Todomodel = mongoose.model('Todos' , Todo)
 //...............................'from mongodb ,  from th e current chgena i created  here 
 module.exports = {
-    UserModel : UserModel ,
+    UserModel : UserModel ,// which one is that whcih i created above as a model 
+    //User : UserModel , it thisalso corrct 
+    //
     Todomodel : Todomodel
 }
 // exporting these  iles from here 
