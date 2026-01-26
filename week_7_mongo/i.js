@@ -30,8 +30,9 @@ app.post("/signup", async function (req, res) {
 
   // Zod schema → ONLY RULES, NOT DATA
   const requiredSchema = z.object({
-    email: z.string().max(100).email(),
+    email: z.string().max(100),
     password: z.string().min(5),
+
     name: z.string().min(2)
   });
 
@@ -171,25 +172,89 @@ function auth(req, res, next) {
 // ==================================================
 
 // Create todo (only logged-in users)
-app.post("/todo", auth, function (req, res) {
+app.post("/todo", auth, async function (req, res) {
 
-  // userId comes from auth middleware
+  // 1️⃣ Define validation rules
+  const todoSchema = z.object({
+    title: z.string().min(1).max(100)
+  });
+
+  // 2️⃣ Validate request body
+  const parsed = todoSchema.safeParse(req.body);
+
+  // 3️⃣ If invalid → stop here
+  if (!parsed.success) {
+    return res.status(400).json({
+      message: "invalid todo input",
+      error: parsed.error.errors
+    });
+  }
+
+  // 4️⃣ Extract validated data// then exaract the data once we validea te it 
+  // validation is a two step preocces 
+  // craetimnmfth teh scema , then puttimnmg it into safe parse 
+  // then we can senf to the  the const parsed
+  const { title } = parsed.data;
+
+  // 5️⃣ userId comes from auth middleware
   const userId = req.userId;
 
+  // 6️⃣ Create todo
+  await TodoModel.create({
+    title: title,
+    done: false,
+    userId: userId
+  });
+
   res.json({
-    userid: userId
+    message: "todo created successfully"
   });
 });
 
 // Fetch todos (only logged-in users)
-app.get("/todos", auth, function (req, res) {
+app.get("/todos", auth, async function (req, res) {
 
-  const userId = req.userId;
+  const userId = req.userId;// user id is taken from jwt 
+  const todos =  await TodoModel.find({
+    userId: userId 
+  })
 
   res.json({
-    userid: userId
+    todos : todos
   });
 });
+
+app.get("/todos/:id" , auth , async function(req, res){
+  
+    // take user id from jwt 
+    const userId = req.userId ;
+    const todoId = req.params.id ;
+    // why we  take  userid and todo id both
+    // because we have to make sure that the todo belongs to the user only
+// if i only take todo id then any one can acces any one else id  h
+    const todo = await TodoModel.findOneAndUpdate(
+        {_id : todoId , userId : userId },
+        { done: true },
+        {new: true }
+
+
+    );
+
+    if(!todo){
+        return res.status(404).json({
+            message : "todo not found"
+        })
+    }
+
+    res.json({
+        message : "todo is done",
+        todo : todo
+    })
+
+
+})
+
+
 
 
 // -------------------- SERVER --------------------

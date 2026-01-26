@@ -3,7 +3,7 @@ const express = require("express");
 const app = express();
 const jwt = require("jsonwebtoken");
 const mongoose = require("mongoose");
-const { UserModel, TodoModel } = require("./db")// move to other file
+const { UserModel, Todomodel } = require("./db")// move to other file
 // skelatne for the epxress cod e
 //!!!!!!always creste a jwt seceret key 
  
