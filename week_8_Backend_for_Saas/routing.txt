@@ -1,0 +1,8 @@
+
+// used when when get to  an endpoint by as vistign a specific endpooitn first 
+// router in express is used to manange differnt routes in differnt files
+// instead of having all routes in index.js we can have them in differnt files and
+e.g userRoutes.js , productRoutes.js etc
+
+// makes our main files clean and managable
+// _____________ a better wau to use router in express _____________
