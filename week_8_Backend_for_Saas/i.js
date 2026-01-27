@@ -6,7 +6,7 @@ const mongoose =  require("mongoose");
 const { useRouter} = require("./Routes/user");
 const {courseRouter} = require("./Routes/courseRoute");
 const {adminRouter} = require("./Routes/admin");
-
+const {UserModel , AdminModel , CourseModel , PurchaseModel} = require ("./db");
 // adding router  
 
 
