@@ -19,8 +19,17 @@ app.use("/course" , courseRouter)// all request coming to course will move to co
 // calling a route fnc 
 app.use("/admin" , adminRouter)
 
+ async function main(){// if therse is aan erro in this link app will crash 
+     await mongoose.connect("mongodb+srv://admin:rr8prOazvrC6Tzi1@cluster0.byjr6ke.mongodb.net/courseeEra_app")
+     app.listen(3000);
+     console.log("listening to the port");
+     }
+      
+main() // calliingthe main fnc
 
-app.listen(3000);
+
+
+// cratign the aut routes 
 
 
 
