@@ -12,7 +12,6 @@ const Schema = mongoose.Schema;
 const UserSchema  = new Schema({
     email: { type : String, unique : true  },
     password: String,
-    name: String,
     firstname: String,
     lastname: String
 
@@ -23,9 +22,9 @@ const AdminSchema = new Schema({
 
      email: { type : String, unique : true  },
     password: String,
-    name: String,
     firstname: String,
     lastname: String
+
 
 })
 
@@ -57,11 +56,10 @@ const PurchaseModel = mongoose.model('purchase', purchaseSchema)
 //...............................'from mongodb ,  from th e current chgena i created  here 
 module.exports = {
     UserModel: UserModel,// which one is that whcih i created above as a model 
-    
     AdminModel: AdminModel,
     CourseModel : CourseModel,
     PurchaseModel : PurchaseModel,
- 
+    
     
 }
 

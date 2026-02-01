@@ -6,6 +6,7 @@
 // const Router = express.Router ; // important 
 //________ or________
 const { Router } = require("express")
+const {UserModel} = require("../db") // any errorher
 const useRouter = Router(); // router is a function 
 
 
@@ -15,15 +16,30 @@ useRouter.use("/signup", async function (req, res) {
     // const email = req.body.email;
     // const name = req.body.name;
 
-    res.json({
-        message: "signup endpoint"
+const {email, password , firstname , lastname } = req.body;
+
+
+await UserModel.create({
+    email : email,
+    password : password,
+    firstname : firstname,
+    lastname : lastname 
+})
+
+ res.json({
+        message: "signup succed"
     })
 
 })
 
+
+
 useRouter.post("/signin", async function (req, res) {
+    const {email , password } = req.body;
+
+    
     res.json({
-        message: "signup endpoint"
+        message: "signin endpoint"
     })
 })
 
