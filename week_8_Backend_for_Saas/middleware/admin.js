@@ -21,7 +21,7 @@ function adminAuth(req, res, next) {
     }
     else {
         res.status(403).json({
-            msg: " incorrect data"
+            msg: "incorrect data"
         })
     }
 

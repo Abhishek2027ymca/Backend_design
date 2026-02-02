@@ -4,9 +4,9 @@ const bcrypt = require("bcrypt");
 
 // import the zod library 
 const { z, parse } = require("zod");
-const { AdminModel } = require("../db");
+const { AdminModel, CourseModel } = require("../db");
 const { secret_keyy_admin } = require("../config");
- const {adminmdlwr} = require("../middleware/admin");
+const { adminmdlwr } = require("../middleware/admin");
 // secret key for  admina nd user  shopuld eb dfrent 
 const secret_keyy = secret_keyy_admin;
 adminRouter.use("/signup", async function (req, res) {
@@ -76,7 +76,7 @@ adminRouter.use("/signup", async function (req, res) {
 
 
 
-adminRouter.post("/signin", adminmdlwr,  async function (req, res) {
+adminRouter.post("/signin", async function (req, res) {
 
 
     const { email, password } = req.body;
@@ -89,7 +89,7 @@ adminRouter.post("/signin", adminmdlwr,  async function (req, res) {
 
     if (admin) {
         const token = jwt.sign({
-            id: admin._id
+            id: admin._id // !! this is a very important line useed in diffrent section , liken authhmiddlewate , course endpoioint 
         }, secret_keyy_admin)
 
 
@@ -109,10 +109,53 @@ adminRouter.post("/signin", adminmdlwr,  async function (req, res) {
 })
 // THIS ENDPOIINT IS AUTHENTICATION BASWED 
 
-adminRouter.get("/course", async function (req, res) {
-    res.json({
-        message: " these are your purchase "
+adminRouter.post("/course", adminmdlwr, async function (req, res) {
+
+    const adminId = req.userId;
+
+    const { title, description, imgUrl, price } = req.body;
+    //  thse varibale are beibng extracted fromt he  req, body 
+
+
+    const course = await CourseModel.create({
+        title: title,
+        description: description,
+        imageUrl: imageUrl,
+        price: price,
+        creatorId: adminId
+
     })
+    req.json({
+        message: "Course created",
+        courseId: course._id
+    })
+
+})
+
+
+
+adminRouter.put("/course", adminmdlwr, async function (res, req) {
+    const adminId = req.userId  // very inportant , userId comes from authmdlwr , whcih is previouly created in jwtsign 
+
+    const { title, description, imageUrl, price, courseId } = req.body;
+
+
+    const course = await CourseModel.updateOne({
+        _id: courseId,  // uskikhud ki jo id hein na  meinusme bhi changes karsakta huu 
+        creatorId: adminId
+    }, {
+        title: title,
+        description: description,
+        imageUrl: imageUrl,
+        price: price
+    })
+
+    res.json({
+        message: "Course_created",
+        courseId: course.secret_keyy_admin
+    })
+
+
 })
 
 

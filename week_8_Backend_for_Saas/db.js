@@ -50,7 +50,7 @@ const purchaseSchema  = new Schema({
 //________________________________this'users' will eb same a sin mongodb , so be specific 
 const UserModel = mongoose.model('User', UserSchema)// User is the name int  the  schema 
 const AdminModel = mongoose.model('admin', AdminSchema)
-const CourseModel = mongoose.model('Course', CourseSchema)
+const CourseModel = mongoose.model('course', CourseSchema)
 const PurchaseModel = mongoose.model('purchase', purchaseSchema)
 
 //...............................'from mongodb ,  from th e current chgena i created  here 
@@ -67,3 +67,11 @@ module.exports = {
 //  this eaxsct scehma will be creayed int eh mondodb conmass 
 // by its won 
 // mongoose will create a collection for us
+
+// !!!!!!! VERY IMORTAN T
+//const AdminModel = mongoose.model('admin', AdminSchema)
+    // the admin  named table is created in the mongodb 
+    // now for each mongodb table ther is a unique id created named as 
+    // tablename._id 
+    //e.g admin.id , user._id , it wiill be created inherentlyy  in the mongobd 
+    // we can use themn for token  refrencing 
