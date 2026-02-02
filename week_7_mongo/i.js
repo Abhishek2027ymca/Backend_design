@@ -43,7 +43,7 @@ app.post("/signup", async function (req, res) {
   if (!parseData.success) {
     res.json({
       message: "incorrect format",
-      error: parseData.error.errors
+      error: parseData.error.errors 
     });
     return;
   }

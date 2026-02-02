@@ -24,7 +24,7 @@ const AdminSchema = new Schema({
     password: String,
     firstname: String,
     lastname: String
-
+    
 
 })
 

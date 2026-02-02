@@ -1,14 +1,19 @@
+
+//! CREATIGN THE ADMIN MIDDLEWARE SPERATELY FOR ADMIN 
+
 const express = require("express");
 const app = express();
 const jwt = require ("jsonwebtoken");
 const mongoose =  require("mongoose");
+const { secret_keyy_admin } = require("../config");
 
-const JWT_SECRET = "ADE!@EX$&%FGHI(7)*HIKL";
 
-function auth(req, res, next) {
+// the secret key is cused  hrr eto verify the middlewat=re 
+// 
+function adminAuth(req, res, next) {
     const token = req.headers.token;// expecting a token in token header 
-
-    const decodedData = jwt.verify(token, JWT_SECRET); // token  has id and i can extarct it using verify method
+         
+    const decodedData = jwt.verify(token, secret_keyy_admin); // token  has id and i can extarct it using verify method
     if (decodedData) {
         req.userId = decodedData.id;// not userId its id , found ed by checkig the jwt value 
         next(); // move to the next middleware or request handler
@@ -24,5 +29,5 @@ function auth(req, res, next) {
 
 // export this auth function 
 module.exports = {
-    auth : auth
+    adminAuth : adminAuth
 }
