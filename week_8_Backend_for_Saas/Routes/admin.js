@@ -3,12 +3,11 @@ const adminRouter = Router(); // create an instance of router
 const bcrypt = require("bcrypt");
 
 // import the zod library 
-const { z, parse } = require("zod");
+const { z} = require("zod");
 const { AdminModel, CourseModel } = require("../db");
 const { secret_keyy_admin } = require("../config");
 const { adminmdlwr } = require("../middleware/admin");
 // secret key for  admina nd user  shopuld eb dfrent 
-const secret_keyy = secret_keyy_admin;
 adminRouter.use("/signup", async function (req, res) {
     // is ther e any errp on signini endpoints
 
@@ -111,7 +110,7 @@ adminRouter.post("/signin", async function (req, res) {
 
 adminRouter.post("/course", adminmdlwr, async function (req, res) {
 
-    const adminId = req.userId;
+    const adminId = req.userId; // this User id is crretaed in authmdlwr
 
     const { title, description, imgUrl, price } = req.body;
     //  thse varibale are beibng extracted fromt he  req, body 
@@ -120,12 +119,12 @@ adminRouter.post("/course", adminmdlwr, async function (req, res) {
     const course = await CourseModel.create({
         title: title,
         description: description,
-        imageUrl: imageUrl,
+        imgUrl: imgUrl,
         price: price,
         creatorId: adminId
 
     })
-    req.json({
+    res.json({
         message: "Course created",
         courseId: course._id
     })
