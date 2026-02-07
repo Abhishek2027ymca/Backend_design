@@ -14,14 +14,14 @@ const [tabData , settabData ] = useState({}) // an empty json
 
 useEffect(function () {
   console.log("save the request fomr tje backedn to sab the datat " + CurrentTab)
-fetch("https://jsonplaceholder.typicode.com/todos/1" + CurrentTab).then(
+fetch("https://jsonplaceholder.typicode.com/todos/" + CurrentTab).then(
   async res =>{
     const json = await res.json();
     settabData(json);
   }
 )
-  
-   
+
+
 
 }, [CurrentTab]);
 
