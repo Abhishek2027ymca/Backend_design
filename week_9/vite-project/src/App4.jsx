@@ -50,7 +50,8 @@ function Counter(props) {
   );
 }
 
-
+//propsn ins simple words
+//
 
 
 
