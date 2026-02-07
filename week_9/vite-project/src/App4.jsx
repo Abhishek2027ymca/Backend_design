@@ -49,3 +49,50 @@ function Counter(props) {
     </div>
   );
 }
+
+
+
+
+
+
+
+
+
+// import { useState, useEffect } from "react";
+
+// function App() {
+//   const [showTimer, setShowTimer] = useState(true);
+
+//   return (
+//     <div>
+//       <button onClick={() => setShowTimer(!showTimer)}>
+//         {showTimer ? "Stop Timer" : "Start Timer"}
+//       </button>
+
+//       {showTimer && <Timer />}
+//     </div>
+//   ); 
+// }
+
+// function Timer() {
+//   const [seconds, setSeconds] = useState(0);
+
+//   console.log("render");
+
+//   useEffect(() => {
+//     console.log("mounted");
+
+//     const id = setInterval(() => {
+//       setSeconds(s => s + 1);
+//     }, 1000);
+
+//     return () => {// for stoping the timer 
+//       console.log("unmounted");
+//       clearInterval(id);
+//     };
+//   }, []);
+
+//   return <h2>Seconds: {seconds}</h2>;
+// }
+
+// export default App;
