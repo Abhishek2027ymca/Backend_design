@@ -60,14 +60,15 @@ const todosComponent = todos.map(
 };
 
 
-function Todo(
-    
-    {title , done }){
-   return (
-    <card>
-        {title}-<span style = {{color: done ? "green" : "red" }}></span>
-    </card>
-   )
+function Todo({ title, done }) {
+  return (
+    <Card>
+      {title} -
+      <span style={{ color: done ? "green" : "red" }}>
+        {done ? " Done" : " Not Done"}
+      </span>
+    </Card>
+  );
 }
 
 
