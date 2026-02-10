@@ -16,6 +16,7 @@ import { useState } from "react";
     const timer = useRef(); 
     // this variable will not reintialixe its value after every stop
     function startTimer() {
+        
         // return a number 
        let valu =   setInterval(() => {
             setCurrentTime((prev) => prev + 1);
