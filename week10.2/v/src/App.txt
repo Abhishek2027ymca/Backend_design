@@ -1,0 +1,46 @@
+
+// rollimng up means to take all the code and put it in one file. This is done to reduce the number of requests made to the server.
+// make props connected to the nearest commomn parent component. This is done to avoid prop drilling. Prop drilling is the process of passing props from one component to another component that is not a direct child of the component that owns the state. This can lead to a lot of unnecessary props being passed down the component tree, which can make the code harder to read and maintain. By connecting the props to the nearest common parent component, we can avoid prop drilling and make the code easier to read and maintain. 
+
+// state variable fdefined in aprticular choild but we need to to useit on another child 
+// rolling up the d= state into least comon ancestor 
+
+
+
+// PROP DRILLING
+import { useState } from "react";
+//props are jsut argument to a comaopeont 
+// we can pass any data as a prop to a component and then that component can use it to render something or to do some logic or whatever it wants to do with it.
+
+// a particly copoent ka deeper child need to accesa a rpop ,  not the imidiate child compoent
+// so we use prop drilling
+// imidiate child need  not to use it  , 
+// its next wan tto use it 
+// Complexity: You may have to pass props through many intermediate components that don’t use the props themselves, just to get them to the component that needs them.
+// Solutoion is COntext API or state management libraries like Redux, MobX, etc.
+
+
+// ___________provide in CONTEXTAPI 
+
+
+The Provider does NOT mean:
+
+"This component will use the context"
+
+It means:
+
+"Everything INSIDE this component tree can access the context"
+
+👇 Example
+<UserContext.Provider value={user}>
+  <Layout />
+</UserContext.Provider>
+
+
+Here:
+
+Layout may or may not use context
+
+Sidebar may or may not use context
+
+Profile might use context
