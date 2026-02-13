@@ -4,7 +4,7 @@
  import reactLogo from './assets/react.svg'
  import viteLogo from '/vite.svg'
  import './App.css'
-import { usePostTitle } from './Hook/usefetch'
+import { useFetch } from './Hook/usefetch'
  
 
  
@@ -25,13 +25,14 @@ import { usePostTitle } from './Hook/usefetch'
 // } , [])
 
 
-const title = usePostTitle();
+const {title} = useFetch("https://jsonplaceholder.typicode.com/todos/1");
 
 
    return (
      <>
         <div>
-            {title }
+     {JSON.stringify(title)}
+     
         </div>
      </>
    )
