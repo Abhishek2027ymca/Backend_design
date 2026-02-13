@@ -48,4 +48,7 @@ export function useFetch(url) {
 
     // now i will return thta json titile formt he dunction
     return post
-}
+} 
+
+
+// usefetch  with refetch 
