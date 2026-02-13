@@ -14,6 +14,7 @@ function Decrease({ count, setCount }) {
   return <button onClick={() => setCount(count - 1)}>Decrease</button>;
 }
 
+
 function Incrase({ count, setCount }) {
   return <button onClick={() => setCount(count + 1)}>Increase</button>;
 }
