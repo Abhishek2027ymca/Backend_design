@@ -44,7 +44,8 @@ export function useFetch(url) {
         getPost();
 // as it has no dependecy array
     }, [])
-
+   
+    
 
     // now i will return thta json titile formt he dunction
     return post
