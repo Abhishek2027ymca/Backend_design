@@ -22,9 +22,9 @@ import { useFetch } from './Hook/usefetch'
 // useEffect(() => {
 //     getPost();
 
-// } , [])
+// } , []) 
 
-
+  
 const {title} = useFetch("https://jsonplaceholder.typicode.com/todos/1");
 
 

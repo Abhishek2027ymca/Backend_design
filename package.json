@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "@tailwindcss/vite": "^4.2.1",
     "axios": "^1.12.2",
     "bcrypt": "^6.0.0",
     "chalk": "^5.6.2",
@@ -8,6 +9,8 @@
     "i": "^0.3.7",
     "jsonwebtoken": "^9.0.3",
     "mongoose": "^8.21.1",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4",
     "zod": "^4.3.6"
   },
   "name": "hkcourse",
@@ -19,5 +22,10 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": ""
+  "description": "",
+  "devDependencies": {
+    "autoprefixer": "^10.4.27",
+    "postcss": "^8.5.6",
+    "tailwindcss": "^4.2.1"
+  }
 }
