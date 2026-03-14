@@ -1,0 +1,21 @@
+1. Create Vite + React project:
+bash 
+npm create vite@latest my-app -- --template react
+2. Navigate to project:
+bash 
+cd my-app
+3. Install base dependencies:
+bash
+npm install
+4. Install Tailwind CSS v4:
+bashnpm
+ install tailwindcss@next @tailwindcss/postcss@next
+5. Create postcss.config.js:
+bash
+echo export default { > postcss.config.js && echo   plugins: { >> postcss.config.js && echo     '@tailwindcss/postcss': {}, >> postcss.config.js && echo   }, >> postcss.config.js && echo } >> postcss.config.js
+6. Update src/index.css:
+bash
+echo @import "tailwindcss"; > src/index.css
+7. Start dev server:
+bash
+npm run dev
