@@ -1,14 +1,13 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import heroImg from './assets/hero.png'
+import { useState } from 'react' 
 import './App.css'
 import { useSelector} from 'react-redux'
 import {useDispatch} from 'react-redux'
-import {increment,decrement , resetvalue} from './feature/Counter/counterSlice'
+import {increment,decrement , resetvalue , incrementByAmount} from './feature/Counter/counterSlice'
  // i need to import these reducer function to dispatch them in app component
 
 function App() {
+
+  const [amount , setAmount] = useState(0)// this is local state , jo ki component ke andar hi use hota hai , aur jab bhi change hota hai to component re-render hota hai , aur naya value milta hai
 
     // use se;ector hook se state ko access kr sakte hai , aur jab bhi state change hoti hai to component re-render hota hai , aur naya value milta hai
       const count = useSelector((state) => state.counter.value) ;
@@ -21,12 +20,17 @@ function App() {
   }
 
   function handleDecrementClick(){
-    dispatch(decrement())
+    dispatch(decrement()) // empty [payload] because i dont need to pass any data to decrement action
   } 
 
 
   function reset(){
     dispatch(resetvalue())
+  }
+
+  function incrementByAmountt(amount){
+  dispatch(incrementByAmount(amount))
+
   }
 
 
@@ -39,7 +43,12 @@ function App() {
       <button onClick={handleDecrementClick}>-</button>
       <br />
       <button onClick={reset}>Reset</button>
-
+      <br />
+      <br/>
+      <input type="text" value={amount} onChange={(e) => setAmount(Number(e.target.value))} />
+      <br/>
+      
+      <button onClick={() => dispatch(incrementByAmountt(amount))}>Increment by Amount</button>
     </div>
     </>
   )
