@@ -71,3 +71,10 @@ let user2 :User= {
     }
 
 }
+
+
+// an interface and use other interfaces as well 
+interface office{
+    user : User ;
+    company : string ;
+}
