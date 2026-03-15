@@ -2,8 +2,9 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 
-const counterSlice = createSlice({
-  name: 'counter',
+const counterSlice = createSlice({ // so countwrSlice is a fucntion 
+    // createSlcie is a function that takes an object as an argument , aur usme name , initialState , reducers hota hai , aur ye function ek object return krta hai jisme actions aur reducer hota hai
+  name: 'counter',  // this is the name of the slice , jo ki store me use hota hai , aur jab bhi action dispatch hota hai to usme type hota hai ki konsa slice ka action hai , aur uske andar reducer function call hota hai
   initialState: { value: 0 },
   reducers: {
     increment(state) {
@@ -15,7 +16,7 @@ const counterSlice = createSlice({
     incrementByAmount(state, action) {
       state.value += Number(action.payload)
     },
-    resetvalue(state, action) {
+    resetvalue(state) {
       state.value = 0 
     },
   },
