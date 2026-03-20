@@ -63,3 +63,7 @@ interface office {
   user: User;
   company: string;
 }
+
+// an absrract class 
+
+ 
