@@ -1,0 +1,56 @@
+ECMAScript imports and exports cannot be written in a CommonJS file under 'verbatimModuleSyntax'.
+Adjust the 'type' field in the nearest 'package.json' to make this file an ECMAScript module,
+or adjust your 'verbatimModuleSyntax', 'module', and 'moduleResolution' settings in TypeScript.
+
+
+
+- TypeScript has a strict mode called verbatimModuleSyntax.
+- When it’s enabled, TS enforces that your import/export style matches the module system you’ve chosen.
+- If your project is still treated as CommonJS (default in Node unless you set "type": "module"), but you’re writing ESM imports, TS complains.
+- The mismatch is usually between:
+- tsconfig.json (module, moduleResolution, verbatimModuleSyntax)
+- package.json (type field)
+✅ How to Fix
+You have two consistent paths:
+- ESM (modern, recommended)
+- In package.json:
+{ "type": "module" }
+- In tsconfig.json:
+"module": "NodeNext",
+"moduleResolution": "NodeNext",
+"verbatimModuleSyntax": true
+- Use import/export.
+- CommonJS (legacy)
+- In package.json: remove "type": "module".
+- In tsconfig.json:
+"module": "CommonJS",
+"moduleResolution": "Node"
+- Use require/module.exports.
+
+📝 In Short
+The error is basically TypeScript saying:
+“Your import/export style doesn’t match the module system you told me to use.”
+
+Would you like me to create a ready-to-use starter template (package.json + tsconfig.json + src/server.ts) that avoids this error every time you initialize a new TS project?
+
+
+
+
+//// HOW TO Fix
+You have two consistent paths:
+- ESM (modern, recommended)
+- In package.json:
+{ "type": "module" }
+
+- In tsconfig.json:
+"module": "NodeNext",
+"moduleResolution": "NodeNext",
+"verbatimModuleSyntax": true
+
+
+
+
+
+📝 In Short
+The error is basically TypeScript saying:
+“Your import/export style doesn’t match the module system you told me to use.”
